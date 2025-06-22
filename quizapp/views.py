@@ -12,7 +12,7 @@ def create(request):
         form =questionform(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('create')
     else:
         form = questionform()
     return render(request,'create.html',{'form': form})
@@ -31,4 +31,3 @@ def quiz(request , id):
         return render(request, 'result.html', {'score': score, 'total': question.count()})
 
     return render(request, 'quiz.html', {'questions': question})
-
