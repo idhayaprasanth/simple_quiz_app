@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h2>Quiz</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for q in questions %}
+            <div>
+                <p><strong>{{ forloop.counter }}. {{ q.question }}</strong></p>
+                <label><input type="radio" name="{{ q.id }}" value="{{ q.option1 }}" required> {{ q.option1 }}</label><br>
+                <label><input type="radio" name="{{ q.id }}" value="{{ q.option2 }}"> {{ q.option2 }}</label><br>
+                <label><input type="radio" name="{{ q.id }}" value="{{ q.option3 }}"> {{ q.option3 }}</label><br>
+                <label><input type="radio" name="{{ q.id }}" value="{{ q.option4 }}"> {{ q.option4 }}</label><br>
+            </div>
+            <hr>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
